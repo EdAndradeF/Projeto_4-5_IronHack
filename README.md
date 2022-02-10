@@ -6,4 +6,6 @@
 
 ​			Coleta de informações e criação do banco de dados:
 
-​				Alvo ==>  Mercados
+​				Alvo ==> Supremo Tribunal Eleitoral
+
+​									criação de banco de dados com perfil do eleitorado brasileiro 
