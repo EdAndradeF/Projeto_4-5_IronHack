@@ -29,12 +29,12 @@ class EleitorDf:
     def __init__(self, pasta, arqs=None):
         self.pasta = pasta
 
-        # self.perfilnacional = []      # todo padrao de colunas
-        self.ufdf = []                  # todo {'ano': {'UF': ['nome arquivo', ...], ...}, ...}
+        # self.perfilnacional = []
+        self.ufdf = []
 
-        self.comdeficiencia = []        # todo {'ano': {'UF': ['nome arquivo', ...], ...}, ...
+        self.comdeficiencia = []
 
-        self.local = ()                 # todo {'ano': ['nome arquivo', ...], ...}
+        self.local = ()
         self.localname = 'local'
 
 
@@ -44,7 +44,7 @@ class EleitorDf:
 
         log('mapping')
         list(map(self.organi, self.arquivos))
-        'stop'
+        s = 'stop'
 
     def organi(self, filename):
 
@@ -56,19 +56,28 @@ class EleitorDf:
         # TABELAS DOS ESTADOS
         elif filtro('secao', filename):
             df = dtframe(self.pasta, filename)
-            dropcolum = df.drop(columns=['DS_MUN_SIT_BIOMETRIA',
-                                         'CD_MUN_SIT_BIOMETRIA'])
-            # df['ANO_ELEICAO'] = df['ANO_ELEICAO'].str.replace('2022', '9999')
-            self.ufdf.append((filename[-6:-4] ,dropcolum))
+            dropcolum = df.drop(columns=['DS_MUN_SIT_BIOMETRIA', 'HH_GERACAO',
+                                         'CD_MUN_SIT_BIOMETRIA', 'QT_ELEITORES_INC_NM_SOCIAL'])
+            dropcolum['ANO_ELEICAO'] = dropcolum['ANO_ELEICAO'].apply(lambda x: x - (x - 2022))
+            dropcolum.columns = ['data', 'ano_eleicao', 'uf', 'id_municipio', 'nome_municipio',
+                                 'numero_zona', 'numero_secao', 'id_genero', 'genero', 'id_estado_civil',
+                                 'estado_civil', 'id_faixa_etaria', 'faixa_etaria', 'id_escolaridade',
+                                 'escolaridade', 'quantidade_eleitores', 'quantidade_biometria', 'deficientes']
+            self.ufdf.append(('eleitorado_2022', dropcolum))
             log('secao')
 
         # LOCAIS DE VOTAÇÃO
         elif filtro('local', filename):
-            df = dtframe(self.pasta, filename).drop(columns=['DT_ELEICAO',
+            df = dtframe(self.pasta, filename).drop(columns=['DT_ELEICAO', 'HH_GERACAO',
                                                              'DS_ELEICAO', 'CD_TIPO_SECAO_AGREGADA',
                                                              'DS_TIPO_SECAO_AGREGADA', 'CD_TIPO_LOCAL',
                                                              'DS_TIPO_LOCAL', 'QT_ELEITOR_ELEICAO'])
-            # df['AA_ELEICAO'] = df['AA_ELEICAO'].str.replace('2022', '9999')
+            df['AA_ELEICAO'] = df['AA_ELEICAO'].apply(lambda x: x - (x - 2022))
+            df.columns = ['data', 'ano', 'uf', 'id_municipio', 'nome_municipio', 'numero_zona', 'numero_secao',
+                'numero_local', 'nome_local', 'endereco', 'bairro', 'cep', 'numero', 'latitude', 'longitude',
+                'id_situacao_local', 'situacao_local', 'id_situacao_zona', 'situacao_zona', 'id_situacao_secao',
+                'situacao_secao', 'id_situacao_localidade','situacao_localidade', 'quantidade_eleitores']
+
             self.local = ('local', df)
             log('local')
 

@@ -15,21 +15,17 @@ def setlog():
                         level=logging.DEBUG)
 
 
-def processo(con, arg):
-    ...
+def processo(config):
+    setlog()
 
-
+    connbd = DBConn(config)
+    getelei = Eleitorado()
+    df = EleitorDf(getelei.pasta, getelei.arq_exist)
+    sql = DBQuerie(connbd.conn, df)
+    sql.todb()
+    connbd.conn.close()
 
 
 
 if __name__ == "__main__":
-    setlog()
-    connbd = DBConn(conf)
-
-    getelei = Eleitorado()
-    df = EleitorDf(getelei.pasta, getelei.arq_exist)
-    sql = DBQuerie(connbd.conn, df)
-
-    sql.todb()
-
-    connbd.conn.close()
+    processo(conf)

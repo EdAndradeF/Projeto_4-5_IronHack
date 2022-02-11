@@ -132,7 +132,7 @@ class AGELget(TSEget):
 
 class Eleitorado(AGELget):
 
-    pasta = r'C:\Users\eandr\Meu Drive\IronHack\Work\modolo 1\Projetos\Data Gathering & Visualization\data\csvs\csv_eleitor'
+    pasta = r'C:\Users\eandr\Meu Drive\IronHack\Work\modolo 2\Projetos\data_visualization\data\csvs\csv_eleitor'
 
     def __init__(self, ano='atual'):
         super().__init__()
