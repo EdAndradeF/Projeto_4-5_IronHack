@@ -1,9 +1,13 @@
 from logging import getLogger
+from os.path import abspath
+
 import sqlalchemy as db
 import psycopg2 as psy
 import os
+from dotenv import load_dotenv
 
 
+env = load_dotenv('./.env')
 
 logg = getLogger('db connect')
 info = logg.info
@@ -17,7 +21,7 @@ class DBConn:
     referenciado para PostgreSQL
     '''
 
-    def __init__(self, conf):
+    def __init__(self):
 
         '''
         parametros utilizados para criação da classe de conexão com Banco de dados

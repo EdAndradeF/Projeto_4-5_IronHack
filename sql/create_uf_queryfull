@@ -1,0 +1,32 @@
+CREATE TABLE IF NOT EXISTS genero_civil as
+(select 
+	genero 
+	,estado_civil
+ 	,faixa_etaria
+ 	,escolaridade
+	,sum(quantidade_eleitores) as eleitores	
+	from eleitorado_2022
+group by genero, estado_civil, faixa_etaria, escolaridade 
+)
+;
+CREATE TABLE IF NOT EXISTS uf_full as(
+select
+	uf
+	,nome_municipio 
+	,escolaridade
+	,faixa_etaria
+	,round(avg(id_escolaridade),2) as media_escolaridade
+	,sum(quantidade_eleitores) as eleitores	
+	from eleitorado_2022
+group by uf, nome_municipio, faixa_etaria, escolaridade)
+;
+
+CREATE TABLE IF NOT EXISTS full_full as(
+select * from eleitorado_2022
+
+
+
+
+
+
+
