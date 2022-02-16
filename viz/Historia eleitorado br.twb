@@ -1903,16 +1903,14 @@
       <zones>
         <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
           <zone h='98222' id='12' param='horz' type-v2='layout-flow' w='98974' x='513' y='889'>
-            <zone h='98222' id='7' param='horz' type-v2='layout-flow' w='98974' x='513' y='889'>
-              <zone h='98222' id='5' type-v2='layout-basic' w='98974' x='513' y='889'>
-                <zone h='98222' id='3' name='populacao por UF/municipio' w='98974' x='513' y='889'>
-                  <zone-style>
-                    <format attr='border-color' value='#000000' />
-                    <format attr='border-style' value='none' />
-                    <format attr='border-width' value='0' />
-                    <format attr='margin' value='4' />
-                  </zone-style>
-                </zone>
+            <zone h='98222' id='5' type-v2='layout-basic' w='98974' x='513' y='889'>
+              <zone h='98222' id='3' name='populacao por UF/municipio' w='98974' x='513' y='889'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
               </zone>
             </zone>
           </zone>
@@ -1930,8 +1928,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='700' minheight='700' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='17' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='98222' id='16' param='vert' type-v2='layout-flow' w='98974' x='513' y='889'>
+            <zone h='100000' id='21' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='84000' id='20' param='vert' type-v2='layout-flow' w='84000' x='8000' y='8000'>
                 <zone h='4500' id='13' mode='dropdown' name='populacao por UF/municipio' param='[federated.08jffnu0ul16to1fel5oq0tmil28].[none:uf:nk]' type-v2='filter' values='cascading' w='8193' x='22470' y='900'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -2011,8 +2009,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='700' minheight='700' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='12' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='98222' id='11' param='vert' type-v2='layout-flow' w='98974' x='513' y='889'>
+            <zone h='100000' id='16' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='84000' id='15' param='vert' type-v2='layout-flow' w='84000' x='8000' y='8000'>
                 <zone fixed-size='280' h='98222' id='3' is-fixed='true' name='Faixa Etária por UF' w='98974' x='513' y='889'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -2069,8 +2067,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='700' minheight='700' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='8' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='98222' id='7' param='vert' type-v2='layout-flow' w='98974' x='513' y='889'>
+            <zone h='100000' id='12' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='84000' id='11' param='vert' type-v2='layout-flow' w='84000' x='8000' y='8000'>
                 <zone fixed-size='280' h='98222' id='3' is-fixed='true' name='ensino por sexo' w='98974' x='513' y='889'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -2123,8 +2121,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='700' minheight='700' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='12' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='98222' id='11' param='vert' type-v2='layout-flow' w='98974' x='513' y='889'>
+            <zone h='100000' id='16' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='84000' id='15' param='vert' type-v2='layout-flow' w='84000' x='8000' y='8000'>
                 <zone fixed-size='280' h='98222' id='3' is-fixed='true' name='ensino por sexo (2)' w='98974' x='513' y='889'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -2308,14 +2306,14 @@
           <zoom type='fit-width' />
         </viewpoint>
       </viewpoints>
-      <active id='13' />
+      <active id='-1' />
       <simple-id uuid='{0048B7B4-F1FF-4DC9-AD7B-CE65BC764201}' />
     </window>
     <window class='dashboard' name='Painel 2'>
       <viewpoints>
         <viewpoint name='Faixa Etária por UF' />
       </viewpoints>
-      <active id='3' />
+      <active id='-1' />
       <simple-id uuid='{92437C70-0F5D-4196-9D56-688FB139185B}' />
     </window>
     <window class='dashboard' name='Painel 3'>
@@ -2324,7 +2322,7 @@
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='3' />
+      <active id='-1' />
       <simple-id uuid='{CC692991-0159-49E7-9016-28AC59751A9E}' />
     </window>
     <window class='dashboard' name='Painel 4'>
@@ -2337,7 +2335,7 @@
           </highlight>
         </viewpoint>
       </viewpoints>
-      <active id='3' />
+      <active id='-1' />
       <simple-id uuid='{A5E3993F-2798-4CE0-975F-25DF51984E57}' />
     </window>
     <window class='dashboard' maximized='true' name='História 1'>
