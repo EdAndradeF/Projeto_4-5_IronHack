@@ -2,15 +2,15 @@ import functools
 import requests
 import logging
 import os
-from multiprocessing import Pool
+# from multiprocessing import Pool
 from bs4 import BeautifulSoup
 from zipfile import ZipFile
 
-from models.params import Config as conf
+from params import Config as conf
 
 
 #   todo tratar excepts indiviualmente
-#   todo criar arquivo de registro para confirmação de processo nao repetido
+
 
 
 logger = logging.getLogger('Extract')
@@ -84,34 +84,57 @@ def ziptodata(url, pasta):
 class TSEget:
 
     '''
-    classe padrao de estaçao
+    classe pai
+    possui os atributos padroes como:
+                url principal do site
+                e configuracao fenix
     '''
 
     site = 'https://dadosabertos.tse.jus.br/'
 
     def __init__(self, modo_fenix=False):
+
+        '''
+            url: url do site de dados abertos do TRIBUNAL SUPERIOR ELEITORAL
+            sopa: retorno da funcao panela
+            _fenix (padrao = false): se True abilita restruturacao total, sem verificacao para processos
+        '''
+
         self.url = self.site
-        self.sopa = self.panela(self.site)
+        self.sopa = self.panela(self.url)
         self._fenix = modo_fenix
 
     def req(self, url):
+        '''
+        recebe endereco para request e retorna response objeto se code 200
+        se qualquer outro resultado retorna none
+        '''
+
+        # todo criar excecao para status code
+
         try:
             resposta = requests.get(url)
             if resposta.status_code == 200:
-                log(f'YAHOOOWW \o/  STATUS CODE {resposta.status_code}')
-                return resposta
+                log(f'YAHOOOWW... STATUS CODE {resposta.status_code}')
+                return resposta.content
             else:
                 log(f'aaa nao STATUS CODE = {resposta.status_code}')
-        except:
-            log(f'Xp, Erro no requerimento')
+        except Exception as e:
+            log(f'XP, Erro no requerimento {e}')
 
     def panela(self, content):
+
+        '''
+
+        recebe string (url) ou conteudo de objeto (<response 200>) e retorna uma linda sopa
+
+        '''
         if isinstance(content, str):
             try:
                 content = self.req(content).content
                 log('link requerido com sucesso')
             except BaseException as ex:
-                log(ex,'\n nao era link')
+                log(ex, '\n nao era link')
         try:
             caldo = BeautifulSoup(content, 'lxml')
             log('preparando caldo, humm......')
@@ -121,9 +144,11 @@ class TSEget:
 
 
 class AGELget(TSEget):
+
     '''
     Assessoria de Gestão Eleitoral
-     '''
+    '''
+
     def __init__(self):
         super().__init__()
         self.url = self.site+'dataset/?organization=tse-agel'
@@ -132,12 +157,16 @@ class AGELget(TSEget):
 
 class Eleitorado(AGELget):
 
+    # repositorio o qual serao salvos os arquivos de dados
     pasta = r'C:\Users\eandr\Meu Drive\IronHack\Work\modolo 2\Projetos\data_visualization\data\csvs\csv_eleitor'
 
     def __init__(self, ano='atual'):
+        if 'data' in  os.listdir('../'):
+            self.arq_exist = os.listdir(self.pasta)
+
         super().__init__()
         self.url = self.url+'&groups=eleitorado'
-        self.arq_exist = os.listdir(self.pasta)
+
         self.sopa = self.panela(self.url)
         self.link = self.linkatual(ano)
         self.csv_novo = self.lista_csvs()
@@ -201,7 +230,8 @@ if __name__ == '__main__':
                         format='%(asctime)s.%(msecs)03d %(levelname)s - %(funcName)s: %(message)s',
                         datefmt='%Y-%m-%d %H:%M:%S')
     # s = AGELget()
-    e = Eleitorado('2018')
+    # t = TSEget()
+    e = Eleitorado()
 
     print()
 

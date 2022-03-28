@@ -1,13 +1,18 @@
 import logging
 
-from models.nodes.extractor import Eleitorado
-from models.nodes.loador import DBQuerie
-from models.nodes.transformactor import EleitorDf
+from nodes.extractor import Eleitorado
+from nodes.loador import DBQuerie
+from nodes.transformactor import EleitorDf
 from params import Config as conf
 from db_conect import DBConn
 
 
 def setlog():
+
+    '''
+    Configuracao do resgistro de log
+    '''
+
     logging.basicConfig(filename=conf.log_name,
                         filemode='a',
                         format='%(asctime)s, %(name)s %(levelname)s %(message)s',
@@ -18,7 +23,7 @@ def setlog():
 def processo(config):
     setlog()
 
-    connbd = DBConn(config)
+    connbd = DBConn('eleitoral')
     getelei = Eleitorado()
     df = EleitorDf(getelei.pasta, getelei.arq_exist)
     sql = DBQuerie(connbd.conn, df)

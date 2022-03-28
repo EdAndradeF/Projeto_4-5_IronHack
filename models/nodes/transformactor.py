@@ -9,6 +9,7 @@ log = logger.info
 
 
 def filtro(filtro, filename):
+
     if filtro in filename:
         return True
     return False
@@ -27,6 +28,9 @@ def dtframe(pasta, filename):
 class EleitorDf:
 
     def __init__(self, pasta, arqs=None):
+
+
+
         self.pasta = pasta
 
         # self.perfilnacional = []

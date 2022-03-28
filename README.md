@@ -52,13 +52,13 @@
 
 ​	Por conta desse agrupamento e provavelmente para o anonimato  dos eleitores, os dados se tornam em geral rasos e sem muita relevância individual.
 
- 	Para uma analise mais profunda, por estar no inicio do ano eleitoral, se faz necessário o acompanhamento dos dados e o cruzamento com informações.  
-
-​	
+​	Para uma analise mais profunda, por estar no inicio do ano eleitoral, se faz necessário o acompanhamento dos dados e o cruzamento com informações.  	
 
 
 
-***Os gráficos para visualização podem ser encontrados na pasta [viz](https://github.com/EdAndradeF/Projeto_4-5_IronHack/tree/main/vizs) na pasta base do projeto***
+
+
+***Os gráficos para visualização podem ser encontrados na pasta [viz](https://github.com/EdAndradeF/Projeto_4-5_IronHack/tree/main/viz) na pasta base do projeto***
 
 
 
